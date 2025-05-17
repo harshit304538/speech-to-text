@@ -13,7 +13,7 @@ A simple and elegant web application that demonstrates how to use the Web Speech
 
 ## 📸 Preview
 
-![Speech Recognition Test Screenshot](screenshot.png)  
+![Speech Recognition Test Screenshot](image.png)  
 *(Optional: Add a real screenshot and name it `screenshot.png` in the repo.)*
 
 ## 🛠️ Technologies Used
