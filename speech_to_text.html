@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speech Recognition Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      color: #333;
+      text-align: center;
+      padding: 2em;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #4a90e2;
+      margin-bottom: 0.5em;
+    }
+
+    button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.8em 1.5em;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background-color: #357ab8;
+    }
+
+    #command {
+      margin-top: 1.5em;
+      font-size: 1.2em;
+      color: #555;
+      background-color: #fff;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      min-width: 300px;
+    }
+
+    footer {
+      margin-top: 2em;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>Speech Recognition Test</h1>
+  <button onclick="startRecognition()">🎤 Start Recognition</button>
+  <p id="command">Your command will appear here.</p>
+
+  <script>
+    function startRecognition() {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const command = event.results[0][0].transcript;
+        document.getElementById('command').textContent = 'Recognized: ' + command;
+      };
+
+      recognition.onerror = function(event) {
+        alert('Error: ' + event.error);
+      };
+    }
+  </script>
+
+  <footer>
+    <p>Powered by Speech Recognition API</p>
+  </footer>
+</body>
+</html>
